@@ -1,22 +1,18 @@
-# Safety Controls — Light Yellow Theme
+# Safety Controls — Yellow Light Theme (v3)
 
-**What changed**
-- Light theme using **#FFCD11** (yellow), white, and black variants.
-- Removed the “Learn • Play • Score” tagline (gone).
-- **All-or-nothing scoring** (exact match only).
-- Fun **titles** + randomized **comment** on the results screen (no letter grade).
-- “Next” button appears only after **Submit**.
-- Learning module is **gated** and the **Play** button appears only on the final screen after acknowledgment.
+**What’s in this build**
+- Light, fun theme using **#FFCD11** with white/black accents and subtle gradients.
+- **All‑or‑nothing** scoring (exact match only).
+- **Submit → Next** flow: Next appears only after Submit. No auto‑advance.
+- **No inline Play Again** during questions; it appears only on the **end screen**.
+- **No mid‑game results**; score/title/comment show **only** at the end.
+- **Back to Learning** button at the top of the game.
+- Learning is **gated**; the Play button appears only on the last learning page after acknowledgment.
+- Home page has **no tagline**, and only shows **Play the Game** after learning is complete.
 
-**Add your Progress Rail logo**
-1. Save your logo file as **SVG** or **PNG**.
-2. Put it here: `assets/images/logo.svg` (recommended) or `assets/images/logo.png`.
-3. If you used PNG, update the `<img>` `src` in:
-   - `index.html` → `assets/images/logo.png`
-   - `learn/index.html` → `../assets/images/logo.png`
-   - `game/index.html` → `../assets/images/logo.png`
+**Add the Progress Rail logo**
+1) Put your logo at `assets/images/logo.svg` (recommended).  
+2) That’s it—the `<img>` tags already point to `logo.svg`. If you prefer PNG, place `logo.png` and change the three paths in `index.html`, `learn/index.html`, and `game/index.html`.
 
-> Using the same filename (`logo.svg`) means you can just replace the file and **no code changes** are needed.
-
-**Where to add scenarios**
-- Edit `game/questions.js` (multiple correct supported). Images go in `assets/images`, videos in `assets/video`.
+**Add scenarios**
+Edit `game/questions.js`. Use local images in `assets/images` or videos in `assets/video`.
