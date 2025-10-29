@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Learn — Safety Controls</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="learn.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo"><div class="mark"></div><div>Learning Module</div></div>
+      <div class="badge" id="progressBadge">Page 1 of 5</div>
+    </div>
+
+    <div class="panel">
+      <div class="progress"><div id="bar"></div></div>
+
+      <section class="slide" data-index="0">
+        <h1 class="h1">Welcome</h1>
+        <p class="p">This short module introduces the four control types used in our scenarios. Take 2–3 minutes to review. You can go back and forth at any time.</p>
+        <ul>
+          <li>Direct Controls</li>
+          <li>Engineering Controls</li>
+          <li>Administrative Controls</li>
+          <li>Better‑Than‑Nothing (BTn)</li>
+        </ul>
+      </section>
+
+      <section class="slide" data-index="1" hidden>
+        <h2 class="h2">Direct Controls</h2>
+        <p class="p">Actions an individual takes right now to manage risk. Examples: fastening a seatbelt, using a spotter, wearing PPE correctly.</p>
+        <div class="alert">Pros: Immediate impact. Cons: Depends on behavior and consistency.</div>
+      </section>
+
+      <section class="slide" data-index="2" hidden>
+        <h2 class="h2">Engineering Controls</h2>
+        <p class="p">Built‑in design features that remove or reduce the hazard. Examples: machine guards, interlocks, lane‑keep assist, airbags.</p>
+        <div class="alert">Pros: Reliable and consistent. Cons: May require investment or design changes.</div>
+      </section>
+
+      <section class="slide" data-index="3" hidden>
+        <h2 class="h2">Administrative Controls</h2>
+        <p class="p">Policies, procedures, and training that influence how work is performed. Examples: signage, SOPs, checklists, time‑out protocols.</p>
+        <div class="alert">Pros: Scalable and teachable. Cons: Less effective than engineering; relies on adherence.</div>
+      </section>
+
+      <section class="slide" data-index="4" hidden>
+        <h2 class="h2">Better‑Than‑Nothing (BTn)</h2>
+        <p class="p">Not ideal, but improves awareness or provides a minimal layer of protection. Use BTn when higher‑order controls aren’t available.</p>
+        <div class="alert warn">Remember: Aim for the most effective control available. BTn is a last resort.</div>
+        <hr/>
+        <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="ack"/> I’ve reviewed and understand these control types.</label>
+      </section>
+
+      <div class="nav">
+        <button class="btn secondary" id="prevBtn">Back</button>
+        <div style="flex:1"></div>
+        <a class="btn ghost" href="../index.html">Exit</a>
+        <button class="btn" id="nextBtn">Next</button>
+        <a class="btn" id="startGameBtn" href="../game/index.html" hidden>Proceed to Game</a>
+      </div>
+    </div>
+
+    <div class="footer">You can revisit learning anytime. Completion is tracked in your browser.</div>
+  </div>
+  <script src="learn.js"></script>
+</body>
+</html>

@@ -1,62 +1,51 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Safety Game</title>
-  <meta name="description" content="Interactive safety training game with short video scenarios and control types." />
-  <link rel="manifest" href="./manifest.webmanifest">
-  <meta name="theme-color" content="#0f766e"/>
-  <link rel="icon" href="./assets/images/icons/icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="./assets/images/icons/icon-192.png"/>
-  <link rel="stylesheet" href="./css/styles.css">
-  <script defer src="./js/app.js"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Safety Controls — Training & Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <span class="logo" aria-hidden="true">🛡️</span>
-      <h1>Safety Game</h1>
+  <div class="container">
+    <div class="header">
+      <div class="logo"><div class="mark"></div><div>Safety Controls</div></div>
+      <div class="badge">Learn → Play → Score</div>
     </div>
-    <nav aria-label="Main">
-      <a href="./index.html" aria-current="page">Home</a>
-      <a href="./intro.html">Control Types</a>
-      <a href="./scenarios/scenario-01.html">Sample Scenario</a>
-    </nav>
-  </header>
 
-  <main class="container">
-    <section class="hero card">
-      <h2>Welcome</h2>
-      <p>Practice choosing the best safety control for each scenario. Some questions may have more than one correct answer.</p>
-      <ul class="bullets">
-        <li>Short video clips (mobile-friendly)</li>
-        <li>Multiple correct answers supported</li>
-        <li>Scores saved on your device</li>
-      </ul>
-      <div class="cta-row">
-        <a class="btn primary" href="./intro.html">Learn the Control Types</a>
-        <a class="btn" href="./scenarios/scenario-01.html">Try a Sample Scenario</a>
+    <div class="panel">
+      <h1 class="h1">Professional. Practical. Fun.</h1>
+      <p class="p">Work through a short learning module, then test your skills in a scenario‑based game. You must complete the learning before the game unlocks.</p>
+      <div class="row" style="margin-top:16px">
+        <a class="btn" href="learn/index.html">Start Learning</a>
+        <a class="btn secondary" href="game/index.html">Go to Game (Locked)</a>
       </div>
-    </section>
-
-    <section class="card">
-      <h3>Your Progress</h3>
-      <div id="progress" class="progress"></div>
-      <button class="btn" id="resetProgressBtn" type="button">Reset Progress</button>
-    </section>
-
-    <section class="card">
-      <h3>About</h3>
-      <p>This site works offline after your first visit (installed as an app on supported devices). Add it to your home screen for quick access.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <small>&copy; <span id="year"></span> Safety Game</small>
-  </footer>
-
-  <script defer src="./js/sw-register.js"></script>
+      <hr/>
+      <div class="row">
+        <div class="col card">
+          <div class="h2">Control Types</div>
+          <div class="p">Direct, Engineering, Administrative, and Better‑Than‑Nothing (BTn). Learn when each applies and why.</div>
+        </div>
+        <div class="col card">
+          <div class="h2">Scenario‑Based</div>
+          <div class="p">Each question can have multiple correct answers. Submit to see feedback, then choose when to go next.</div>
+        </div>
+        <div class="col card">
+          <div class="h2">Score & Feedback</div>
+          <div class="p">Get a final score and a friendly title with coaching on what to review.</div>
+        </div>
+      </div>
+      <div class="footer">Tip: Use <span class="kbd">GitHub Pages</span> to host, or drop these files into SharePoint.</div>
+    </div>
+  </div>
+  <script>
+    // Update the "Go to Game" button label if learning is completed
+    const done = localStorage.getItem('learningCompleted');
+    if(done){
+      const link = document.querySelector('a[href="game/index.html"]');
+      link.textContent = 'Go to Game';
+    }
+  </script>
 </body>
 </html>
