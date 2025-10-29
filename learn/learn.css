@@ -1,2 +1,22 @@
+
+:root{--bg:#ffffff;--fg:#1f2937;--muted:#6b7280;--brand:#2563eb;--border:#e5e7eb;--card:#f8fafc}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Calibri,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+.header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:10}
+.header__inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 16px}
+.logo{height:32px;width:auto}
+.brand{font-weight:700;color:var(--brand)}
+.spacer{flex:1}
+.progresswrap{display:flex;align-items:center;gap:10px}
+.progress-track{width:200px;max-width:40vw;height:8px;border-radius:999px;background:#eef2ff;overflow:hidden;border:1px solid #e5e7eb}
+.progress-bar{height:100%;background:var(--brand);width:0}
+.badge{background:#eef2ff;color:#1e40af;padding:6px 10px;border-radius:999px;font-weight:600}
+.main{max-width:960px;margin:0 auto;padding:24px 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:0 0 16px 0}
 .nav{display:flex;align-items:center;gap:8px;margin-top:10px}
+.btn{appearance:none;border:1px solid var(--border);background:#fff;border-radius:10px;padding:8px 12px;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
 .slide ul{margin:6px 0 0 18px}
+.ack{display:flex;align-items:center;gap:8px;margin:12px 0}
+.cta{margin-top:8px}
+.small{font-size:12px;color:var(--muted)}

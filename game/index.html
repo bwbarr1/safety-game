@@ -1,60 +1,57 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Game — Safety Controls</title>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=3"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scenario Game — Safety Controls</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script>
+    // Optional hard gate: uncomment to force learning first
+    // if(!localStorage.getItem('learningCompleted')) { location.replace('../learn/index.html'); }
+  </script>
 </head>
 <body>
-  <div class="container">
-    <div class="header compact">
-      <div class="logo">
-        <img src="../assets/images/logo.svg" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
-        <div>Scenario Game</div>
+  <header class="header">
+    <div class="header__inner">
+      <img src="../assets/images/logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+      <div class="brand">Scenario Game</div>
+      <div class="flex" style="margin-left:auto">
+        <div id="qProgress" class="progress">Question 0 of 0</div>
+        <div id="scoreBadge" class="badge">0 / 0</div>
       </div>
-      <div class="row" style="gap:8px">
-        <a class="btn ghost" href="../learn/index.html" id="backToLearnBtn">Back to Learning</a>
-        <div class="badge" id="scoreBadge">0 / 0</div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div id="quizPanel" class="card">
+      <h1 id="qText">Question text…</h1>
+      <div id="media" class="media"></div>
+      <div id="options"></div>
+      <div class="controls">
+        <button id="submitBtn" class="btn-primary">Submit</button>
+        <button id="nextBtn" class="btn-secondary" hidden>Next</button>
+      </div>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+      <p class="small">Select all that apply. Next appears only after you submit.</p>
+    </div>
+
+    <div id="resultPanel" class="card result" hidden>
+      <h2 id="funTitle">Control Captain</h2>
+      <p id="scoreLine">Score 0/0 (0%)</p>
+      <p id="funComment">Great job!</p>
+      <div class="controls">
+        <button id="playAgainBtn" class="btn-primary">Play Again</button>
+        <a class="btn-secondary" href="../learn/index.html" style="text-decoration:none;display:inline-block;padding:10px 14px;border-radius:10px">Revisit Learning</a>
       </div>
     </div>
 
-    <div class="panel" id="quizPanel">
-      <div class="grid">
-        <div class="tag" id="qProgress">Question 1</div>
-        <h1 class="h2" id="qText">Question text...</h1>
-        <div id="media" class="media"></div>
+    <footer>
+      <a href="../learn/index.html">Back to Learning</a>
+    </footer>
+  </main>
 
-        <div class="p">Select all that apply:</div>
-        <div class="options" id="options"></div>
-
-        <div style="display:flex;gap:8px;margin-top:6px">
-          <button class="btn" id="submitBtn">Submit</button>
-          <button class="btn secondary" id="nextBtn" hidden>Next</button>
-        </div>
-
-        <div id="feedback"></div>
-      </div>
-    </div>
-
-    <div class="panel result" id="resultPanel" hidden>
-      <div class="scoreline" id="scoreLine">Score 0/0 (0%)</div>
-      <div class="title" id="funTitle">Control Captain</div>
-      <div class="comment" id="funComment">Great job!</div>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <button class="btn" id="playAgainBtn">Play Again</button>
-        <a class="btn ghost" href="../learn/index.html">Revisit Learning</a>
-      </div>
-    </div>
-
-    <div class="footer">Next appears only after you submit. No auto‑advance.</div>
-  </div>
-
-  <script>
-    if(!localStorage.getItem('learningCompleted')){ location.replace('../learn/index.html'); }
-  </script>
-  <script src="questions.js?v=3"></script>
-  <script src="game.js?v=3"></script>
+  <script src="./questions.js"></script>
+  <script src="./game.js"></script>
 </body>
 </html>
