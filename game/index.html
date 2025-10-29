@@ -5,51 +5,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Scenario Game — Safety Controls</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../assets/styles.css" />
   <script>
     // Optional hard gate: uncomment to force learning first
     // if(!localStorage.getItem('learningCompleted')) { location.replace('../learn/index.html'); }
   </script>
 </head>
 <body>
-  <header class="header">
-    <div class="header__inner">
-      <img src="../assets/images/logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
-      <div class="brand">Scenario Game</div>
-      <div class="flex" style="margin-left:auto">
-        <div id="qProgress" class="progress">Question 0 of 0</div>
-        <div id="scoreBadge" class="badge">0 / 0</div>
+  <div class="container">
+    <div class="header compact">
+      <div class="logo">
+        <img src="../assets/images/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+        <span>Scenario Game</span>
+      </div>
+      <div>
+        <span id="qProgress" class="badge">Question 0 of 0</span>
+        <span id="scoreBadge" class="badge">0 / 0</span>
       </div>
     </div>
-  </header>
 
-  <main class="main">
-    <div id="quizPanel" class="card">
-      <h1 id="qText">Question text…</h1>
+    <div class="panel">
+      <h1 id="qText" class="h1">Question text…</h1>
       <div id="media" class="media"></div>
-      <div id="options"></div>
-      <div class="controls">
-        <button id="submitBtn" class="btn-primary">Submit</button>
-        <button id="nextBtn" class="btn-secondary" hidden>Next</button>
+      <div id="options" class="options"></div>
+      <div class="row" style="margin-top:8px">
+        <button id="submitBtn" class="btn" type="button">Submit</button>
+        <button id="nextBtn" class="btn secondary" type="button" hidden>Next</button>
+        <a class="btn ghost" href="../learn/index.html">Back to Learning</a>
       </div>
-      <div id="feedback" class="feedback" aria-live="polite"></div>
-      <p class="small">Select all that apply. Next appears only after you submit.</p>
+      <div id="feedback" class="p" aria-live="polite" style="margin-top:10px"></div>
+      <p class="p" style="margin-top:6px">Select all that apply. Next appears only after you submit.</p>
     </div>
 
-    <div id="resultPanel" class="card result" hidden>
-      <h2 id="funTitle">Control Captain</h2>
-      <p id="scoreLine">Score 0/0 (0%)</p>
-      <p id="funComment">Great job!</p>
-      <div class="controls">
-        <button id="playAgainBtn" class="btn-primary">Play Again</button>
-        <a class="btn-secondary" href="../learn/index.html" style="text-decoration:none;display:inline-block;padding:10px 14px;border-radius:10px">Revisit Learning</a>
+    <div id="resultPanel" class="panel result" hidden>
+      <div id="funTitle" class="title">Control Captain</div>
+      <div id="scoreLine" class="scoreline">Score 0/0 (0%)</div>
+      <div id="funComment" class="comment">Great job!</div>
+      <div class="row">
+        <button id="playAgainBtn" class="btn" type="button">Play Again</button>
+        <a class="btn secondary" href="../learn/index.html">Revisit Learning</a>
       </div>
     </div>
 
-    <footer>
-      <a href="../learn/index.html">Back to Learning</a>
-    </footer>
-  </main>
+    <div class="footer">Next appears only after you submit. No auto-advance.</div>
+  </div>
 
   <script src="./questions.js"></script>
   <script src="./game.js"></script>

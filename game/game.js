@@ -9,7 +9,6 @@
   const media = document.getElementById('media');
   const scoreBadge = document.getElementById('scoreBadge');
   const resultPanel= document.getElementById('resultPanel');
-  const quizPanel = document.getElementById('quizPanel');
   const scoreLine = document.getElementById('scoreLine');
   const funTitle = document.getElementById('funTitle');
   const funComment = document.getElementById('funComment');
@@ -29,7 +28,6 @@
 
     feedback.textContent = '';
     resultPanel.hidden = true;
-    quizPanel.hidden = false;
     nextBtn.hidden = true;     // appears only after submit
     submitBtn.disabled = false;
 
@@ -38,7 +36,7 @@
       const img = new Image();
       img.src = q.image;
       img.alt = '';
-      img.className = 'media-img';
+      img.className = '';
       media.appendChild(img);
     }
     if(q.video){
@@ -52,6 +50,7 @@
       'Direct Control','Engineering Control','Administrative Control','Better Than Nothing'
     ];
     optionsEl.innerHTML = '';
+    optionsEl.classList.add('options');
     opts.forEach((opt, idx)=>{
       const id = `opt_${i}_${idx}`;
       const wrap = document.createElement('label');
@@ -92,8 +91,7 @@
     if(missed.length) detail += `${detail? ' ' : ''}Missing: ${missed.join(', ')}.`;
     if(extra.length)  detail += `${detail? ' ' : ''}Not required: ${extra.join(', ')}.`;
 
-    feedback.className = 'feedback ' + (isRight ? 'ok' : 'no');
-    feedback.innerHTML = `<strong>${isRight ? 'Correct' : 'Not quite'}</strong><br>${detail}`;
+    feedback.innerHTML = `<span class="tag ${isRight ? 'good' : 'bad'}">${isRight ? 'Correct' : 'Not quite'}</span> ` + (detail ? `<span class="p">${detail}</span>` : '');
   }
 
   function getGradingComment(score, total){
@@ -117,9 +115,9 @@
   }
 
   function showResults(){
-    quizPanel.hidden = true;
-    resultPanel.hidden = false;
     const pct = Math.round((score/QUESTIONS.length)*100);
+    document.querySelector('.panel').hidden = true;
+    document.getElementById('resultPanel').hidden = false;
     scoreLine.textContent = `Score ${score}/${QUESTIONS.length} (${pct}%)`;
     funTitle.textContent = pickTitle(pct);
     funComment.textContent = getGradingComment(score, QUESTIONS.length);
@@ -139,8 +137,8 @@
   playAgainBtn.addEventListener('click', ()=>{
     i = 0; score = 0;
     updateScoreBadge();
-    resultPanel.hidden = true;
-    quizPanel.hidden = false;
+    document.getElementById('resultPanel').hidden = true;
+    document.querySelector('.panel').hidden = false;
     renderQuestion();
   });
 
