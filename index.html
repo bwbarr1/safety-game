@@ -4,47 +4,49 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Safety Controls — Training & Game</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="logo"><div class="mark"></div><div>Safety Controls</div></div>
-      <div class="badge">Learn → Play → Score</div>
+    <div class="header compact">
+      <div class="logo">
+        <img src="assets/images/logo.svg" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
+        <div>Safety Controls</div>
+      </div>
+      <div id="learnBadge" class="badge" hidden>Learning Complete ✓</div>
     </div>
 
     <div class="panel">
-      <h1 class="h1">Professional. Practical. Fun.</h1>
-      <p class="p">Work through a short learning module, then test your skills in a scenario‑based game. You must complete the learning before the game unlocks.</p>
-      <div class="row" style="margin-top:16px">
+      <h1 class="h1">Train quickly. Play the game.</h1>
+      <p class="p">Click through a few quick screens to learn the control types. When you finish, the game unlocks.</p>
+      <div class="row" style="margin-top:6px">
         <a class="btn" href="learn/index.html">Start Learning</a>
-        <a class="btn secondary" href="game/index.html">Go to Game (Locked)</a>
+        <a class="btn secondary" id="playGameBtn" href="game/index.html" hidden>Play the Game</a>
       </div>
       <hr/>
       <div class="row">
         <div class="col card">
-          <div class="h2">Control Types</div>
-          <div class="p">Direct, Engineering, Administrative, and Better‑Than‑Nothing (BTn). Learn when each applies and why.</div>
+          <div class="h2">What you’ll learn</div>
+          <div class="p">Direct, Engineering, Administrative, and Better‑Than‑Nothing controls—what they are and when to use each.</div>
         </div>
         <div class="col card">
-          <div class="h2">Scenario‑Based</div>
-          <div class="p">Each question can have multiple correct answers. Submit to see feedback, then choose when to go next.</div>
+          <div class="h2">Game flow</div>
+          <div class="p">Select all that apply. Submit to see feedback, then tap Next. No auto‑advance.</div>
         </div>
         <div class="col card">
-          <div class="h2">Score & Feedback</div>
-          <div class="p">Get a final score and a friendly title with coaching on what to review.</div>
+          <div class="h2">Finish strong</div>
+          <div class="p">You’ll get a fun title and comment at the end based on your score.</div>
         </div>
       </div>
-      <div class="footer">Tip: Use <span class="kbd">GitHub Pages</span> to host, or drop these files into SharePoint.</div>
+      <div class="footer">Need to re-take the learning? You can revisit it anytime.</div>
     </div>
   </div>
   <script>
     const done = localStorage.getItem('learningCompleted');
-    if(done){
-      const link = document.querySelector('a[href="game/index.html"]');
-      link.textContent = 'Go to Game';
-    }
+    const playBtn = document.getElementById('playGameBtn');
+    const badge = document.getElementById('learnBadge');
+    if(done){ playBtn.hidden = false; badge.hidden = false; }
   </script>
 </body>
 </html>

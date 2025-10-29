@@ -4,39 +4,42 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Game — Safety Controls</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/css/styles.css"/>
 </head>
 <body>
-  <div class="container"> 
-    <div class="header">
-      <div class="logo"><div class="mark"></div><div>Scenario Game</div></div>
-      <div class="badge" id="scoreBadge">Score 0 / 0</div>
+  <div class="container">
+    <div class="header compact">
+      <div class="logo">
+        <img src="../assets/images/logo.svg" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
+        <div>Scenario Game</div>
+      </div>
+      <div class="badge" id="scoreBadge">0 / 0</div>
     </div>
 
-    <div class="panel" id="quizPanel"> 
+    <div class="panel" id="quizPanel">
       <div class="grid">
         <div class="tag" id="qProgress">Question 1</div>
         <h1 class="h2" id="qText">Question text...</h1>
-        <div id="media"></div>
+        <div id="media" class="media"></div>
         <div class="p">Select all that apply:</div>
         <div class="options" id="options"></div>
-        <div style="display:flex;gap:10px;margin-top:10px">
+        <div style="display:flex;gap:8px;margin-top:6px">
           <button class="btn" id="submitBtn">Submit</button>
           <button class="btn secondary" id="nextBtn" hidden>Next</button>
-          <button class="btn ghost" id="restartBtn" hidden>Try Again</button>
+          <button class="btn ghost" id="restartBtn" hidden>Play Again</button>
         </div>
         <div id="feedback"></div>
       </div>
     </div>
 
     <div class="panel result" id="resultPanel" hidden>
-      <div class="score-bubble" id="finalScore">0%</div>
-      <div class="h2" id="title"></div>
-      <p class="p" id="summary"></p>
-      <div style="display:flex;gap:10px">
+      <div class="scoreline" id="scoreLine">Score 0/0 (0%)</div>
+      <div class="title" id="funTitle">Control Captain</div>
+      <div class="comment" id="funComment">Great job!</div>
+      <div style="display:flex;gap:8px;margin-top:8px">
         <button class="btn" id="playAgainBtn">Play Again</button>
-        <a class="btn secondary" href="../learn/index.html">Revisit Learning</a>
+        <a class="btn ghost" href="../learn/index.html">Revisit Learning</a>
       </div>
     </div>
 
@@ -44,9 +47,7 @@
   </div>
 
   <script>
-    if(!localStorage.getItem('learningCompleted')){
-      location.replace('../learn/index.html');
-    }
+    if(!localStorage.getItem('learningCompleted')){ location.replace('../learn/index.html'); }
   </script>
   <script src="questions.js"></script>
   <script src="game.js"></script>

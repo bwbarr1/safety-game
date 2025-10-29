@@ -11,29 +11,23 @@
 
   function render(){
     slides.forEach((s,idx)=>s.hidden = idx!==i)
-    const pct = ((i+1)/total)*100
+    const pct = Math.round(((i+1)/total)*100)
     bar.style.width = pct+'%'
-    badge.textContent = `Page ${i+1} of ${total}`
+    badge.textContent = `${i+1} / ${total}`
     prev.disabled = i===0
     next.hidden = i===total-1
-    start.hidden = !(i===total-1)
-    if(i===total-1){
-      start.toggleAttribute('disabled', !ack || !ack.checked)
-    }
+    // Only show Play on the last slide after ack
+    const ready = (i===total-1) && ack && ack.checked
+    start.hidden = !ready
   }
 
   prev.addEventListener('click',()=>{ if(i>0){ i--; render() } })
   next.addEventListener('click',()=>{ if(i<total-1){ i++; render() } })
   ack && ack.addEventListener('change',()=>{
-    if(ack.checked){
-      localStorage.setItem('learningCompleted', String(Date.now()))
-    } else {
-      localStorage.removeItem('learningCompleted')
-    }
+    if(ack.checked){ localStorage.setItem('learningCompleted', String(Date.now())) }
+    else { localStorage.removeItem('learningCompleted') }
     render()
   })
-  start.addEventListener('click', (e)=>{
-    if(ack && !ack.checked){ e.preventDefault(); }
-  })
+  if(localStorage.getItem('learningCompleted')){ if(ack) ack.checked = true }
   render()
 })();
