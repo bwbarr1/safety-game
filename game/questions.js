@@ -1,25 +1,51 @@
-// You can add as many as you like. Support for multiple correct answers.
-// Tip: videos live under ../assets/video and images under ../assets/images
 const QUESTIONS = [
   {
-    text: "Driver forgets to fasten a seatbelt before moving the vehicle.",
-    image: "../assets/images/seatbelt.jpg", // optional
-    options: ["Direct","Engineering","Administrative","Better‑Than‑Nothing"],
-    correct: ["Direct","Administrative"],
-    explanation: "Direct: the driver fastens the belt now. Administrative: training/signage/supervisor checks reinforce the habit.",
-    hints: { "Direct":"What can the person do right now?", "Administrative":"What policy or training helps?" }
+    text: "What type of control is shown in the image below?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Airbag_deployment_test.jpg/640px-Airbag_deployment_test.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Direct Control", "Engineering Control"],
+    explanation: "Airbags are engineering controls; choosing to rely on them correctly involves driver action as a direct control."
   },
   {
-    text: "Forklift has a proximity sensor that auto‑brakes when an obstacle is detected.",
-    video: "../assets/video/forklift_proximity.mp4", // optional
-    options: ["Direct","Engineering","Administrative","Better‑Than‑Nothing"],
-    correct: ["Engineering"],
-    explanation: "A built‑in design feature that reduces hazard without relying on behavior."
+    text: "What type of control is lane assist in a vehicle?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lane_assist_warning.jpg/640px-Lane_assist_warning.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Engineering Control"],
+    explanation: "Lane assist is a built-in feature that reduces risk through design—an engineering control."
   },
   {
-    text: "Temporary mirror added to improve visibility until a proper guard is installed.",
-    options: ["Direct","Engineering","Administrative","Better‑Than‑Nothing"],
-    correct: ["Better‑Than‑Nothing"],
-    explanation: "It’s not ideal but offers some awareness while higher‑order controls are pending."
+    text: "What type of control is using a rear-view mirror?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Rear_view_mirror.jpg/640px-Rear_view_mirror.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Better Than Nothing"],
+    explanation: "A mirror improves awareness but doesn't eliminate the hazard—better than nothing."
+  },
+  {
+    text: "What type of control is using side-view mirrors?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Side_mirror.jpg/640px-Side_mirror.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Better Than Nothing"],
+    explanation: "Similar to rear-view mirrors, this is a minimal improvement—better than nothing."
+  },
+  {
+    text: "What type of control is using turn indicators?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Turn_signal.jpg/640px-Turn_signal.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Direct Control"],
+    explanation: "A direct action the driver takes to communicate and reduce risk."
+  },
+  {
+    text: "What type of control is brake assist?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Brake_assist.jpg/640px-Brake_assist.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Engineering Control"],
+    explanation: "A design feature that automatically adds braking force—engineering control."
+  },
+  {
+    text: "What type of control is lane change assist?",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lane_change_assist.jpg/640px-Lane_change_assist.jpg",
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+    correct: ["Engineering Control"],
+    explanation: "Sensors and automation aiding a lane change are engineering controls."
   }
-]
+];

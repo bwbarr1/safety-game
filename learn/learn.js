@@ -18,7 +18,7 @@
     next.hidden = i===total-1
     start.hidden = !(i===total-1)
     if(i===total-1){
-      start.toggleAttribute('disabled', !ack.checked)
+      start.toggleAttribute('disabled', !ack || !ack.checked)
     }
   }
 

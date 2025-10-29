@@ -23,13 +23,12 @@
 
   function renderQuestion(){
     const q = QUESTIONS[i]
-    qText.textContent = q.text
+    qText.textContent = q.text || q.question || ''
     qProgress.textContent = `Question ${i+1} of ${QUESTIONS.length}`
     feedback.innerHTML = ''
     nextBtn.hidden = true
     restartBtn.hidden = true
 
-    // media
     media.innerHTML = ''
     if(q.image){
       const img = new Image(); img.src = q.image; img.alt = ''
@@ -41,9 +40,8 @@
       media.appendChild(v)
     }
 
-    // options
     optionsEl.innerHTML = ''
-    const opts = q.options || ['Direct','Engineering','Administrative','Better‑Than‑Nothing']
+    const opts = q.options && q.options.length ? q.options : ["Direct Control","Engineering Control","Administrative Control","Better Than Nothing"]
     opts.forEach((opt,idx)=>{
       const id = `opt_${i}_${idx}`
       const wrap = document.createElement('label')
@@ -65,27 +63,40 @@
   function evaluate(){
     const q = QUESTIONS[i]
     const chosen = Array.from(optionsEl.querySelectorAll('input:checked')).map(el=>el.value)
-
-    const correct = q.correct
+    const correct = q.correct || []
     const isRight = arraysEqual(chosen, correct)
 
     if(isRight) score++
     updateScoreBadge()
 
-    // Lock options
     optionsEl.querySelectorAll('input').forEach(el=>el.disabled=true)
     submitBtn.disabled = true
 
-    // Feedback UI
     const goodTag = `<span class='tag good'>Correct</span>`
     const badTag = `<span class='tag bad'>Not quite</span>`
-    feedback.innerHTML = `${isRight?goodTag:badTag} <div class='p' style='margin-top:8px'>${q.explanation||''}</div>`
+    const expl = q.explanation || ''
+    feedback.innerHTML = `${isRight?goodTag:badTag} ${expl?`<div class='p' style='margin-top:8px'>${expl}</div>`:''}`
 
-    // Show Next button (no auto-advance)
+    const quip = isRight ? q.onCorrect : q.onIncorrect
+    if(quip){
+      const p = document.createElement('div'); p.className = 'p'; p.style.marginTop = '6px'; p.textContent = quip; feedback.appendChild(p)
+    }
+
     nextBtn.hidden = false
-
-    // Show Restart on last question
     if(i===QUESTIONS.length-1){ restartBtn.hidden = false }
+  }
+
+  function getGradingComment(score, total){
+    const percent = (score/total)*100
+    let comments = []
+    if(percent === 100){
+      comments = ["Wow, you did it!", "I'm so proud of you!", "A perfect score?! You're amazing!"]
+    } else if(percent >= 80){
+      comments = ["Almost! Try again!!", "You're getting there!!", "I know you can get a perfect score... keep trying!"]
+    } else {
+      comments = ["Aw man! I know you can do better than that!", "Oh no! Let's try again...", "I think it might be time to review our definitions...let's try again!"]
+    }
+    return comments[Math.floor(Math.random()*comments.length)]
   }
 
   function showResults(){
@@ -100,21 +111,15 @@
     else if(pct>=60){ t='Cautious Co‑Pilot'; s='Good start. Revisit the learning pages and focus on the key differences.' }
     else { t='Trainee'; s='No worries—review the learning module, then try again. Practice makes confident.' }
 
+    const fun = getGradingComment(score, QUESTIONS.length)
     title.textContent = t
-    summary.textContent = s
+    summary.textContent = fun + ' ' + s
   }
 
   submitBtn.addEventListener('click', evaluate)
-  nextBtn.addEventListener('click', ()=>{
-    if(i<QUESTIONS.length-1){ i++; renderQuestion() }
-    else { showResults() }
-  })
-  restartBtn.addEventListener('click', ()=>{
-    i=0; score=0; updateScoreBadge(); quizPanel.hidden=false; resultPanel.hidden=true; renderQuestion()
-  })
-  playAgainBtn.addEventListener('click', ()=>{
-    i=0; score=0; updateScoreBadge(); quizPanel.hidden=false; resultPanel.hidden=true; renderQuestion()
-  })
+  nextBtn.addEventListener('click', ()=>{ if(i<QUESTIONS.length-1){ i++; renderQuestion() } else { showResults() } })
+  restartBtn.addEventListener('click', ()=>{ i=0; score=0; updateScoreBadge(); quizPanel.hidden=false; resultPanel.hidden=true; renderQuestion() })
+  playAgainBtn.addEventListener('click', ()=>{ i=0; score=0; updateScoreBadge(); quizPanel.hidden=false; resultPanel.hidden=true; renderQuestion() })
 
   updateScoreBadge();
   renderQuestion();
