@@ -1,127 +1,74 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Learn — Safety Control Types</title>
-  <link rel="stylesheet" href="../assets/styles.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Learn — Safety Controls</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="learn.css"/>
 </head>
 <body>
   <div class="container">
     <div class="header compact">
       <div class="logo">
-        <img src="../assets/images/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-        <span>Learn: Safety Controls</span>
+        <img src="../assets/images/logo.svg" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
+        <div>Learning Module</div>
       </div>
-      <div style="min-width:220px">
-        <div class="progress"><div id="bar" style="width:0%"></div></div>
-        <span id="progressBadge" class="badge" style="margin-left:8px">0 / 0</span>
+      <div class="badge" id="progressBadge">1 / 5</div>
+    </div>
+
+    <div class="panel">
+      <div class="progress"><div id="bar"></div></div>
+
+      <section class="slide" data-index="0">
+        <h1 class="h2">Welcome</h1>
+        <p class="p">Five short screens. Then you’ll unlock the game.</p>
+        <ul>
+          <li>Direct Controls</li>
+          <li>Engineering Controls</li>
+          <li>Administrative Controls</li>
+          <li>Better‑Than‑Nothing (BTn)</li>
+        </ul>
+      </section>
+
+      <section class="slide" data-index="1" hidden>
+        <h2 class="h2">Direct Controls</h2>
+        <p class="p">Immediate actions to manage risk (seatbelt, spotter, wearing PPE correctly).</p>
+        <div class="alert">Pros: Instant. Cons: Relies on behavior.</div>
+      </section>
+
+      <section class="slide" data-index="2" hidden>
+        <h2 class="h2">Engineering Controls</h2>
+        <p class="p">Design features that remove or reduce the hazard (guards, interlocks, lane‑keep assist).</p>
+        <div class="alert">Pros: Reliable. Cons: May require investment.</div>
+      </section>
+
+      <section class="slide" data-index="3" hidden>
+        <h2 class="h2">Administrative Controls</h2>
+        <p class="p">Procedures/training that influence how work is done (signage, SOPs, checklists).</p>
+        <div class="alert">Pros: Scalable. Cons: Requires adherence.</div>
+      </section>
+
+      <section class="slide" data-index="4" hidden>
+        <h2 class="h2">Better‑Than‑Nothing (BTn)</h2>
+        <p class="p">Not ideal, but improves awareness when higher‑order controls aren’t available.</p>
+        <div class="alert" style="background:#fff8db;border-color:#fde68a">Aim for the strongest control available. BTn is a last resort.</div>
+        <hr/>
+        <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="ack"/> I’ve reviewed and understand these control types.</label>
+      </section>
+
+      <div class="nav">
+        <button class="btn ghost" id="prevBtn">Back</button>
+        <div style="flex:1"></div>
+        <a class="btn ghost" href="../index.html">Exit</a>
+        <button class="btn secondary" id="nextBtn">Next</button>
+        <a class="btn" id="startGameBtn" href="../game/index.html" hidden>Play the Game</a>
       </div>
     </div>
 
-    <div class="row" style="margin-bottom:10px">
-      <button id="prevBtn" class="btn" type="button">◀ Prev</button>
-      <button id="nextBtn" class="btn secondary" type="button">Next ▶</button>
-    </div>
-
-    <section class="grid">
-      <article class="panel slide">
-        <h1 class="h1">Welcome to Safety Controls</h1>
-        <p class="p">In this short walkthrough you’ll learn the four control types you’ll use in the scenario game. Keep going until the end to unlock the game.</p>
-        <ul class="p">
-          <li><strong>Direct Control</strong> — actions people take directly to avoid or reduce risk.</li>
-          <li><strong>Engineering Control</strong> — risk reduced by design, equipment, or technology.</li>
-          <li><strong>Administrative Control</strong> — policies, training, or procedures that guide safe behavior.</li>
-          <li><strong>Better Than Nothing (BTN)</strong> — helps a bit, but doesn’t remove or meaningfully reduce the hazard.</li>
-        </ul>
-      </article>
-
-      <article class="panel slide" hidden>
-        <h2 class="h2">Direct Control</h2>
-        <p class="p">Direct controls are immediate actions a person takes to control a hazard: e.g., setting a parking brake, using turn indicators, or maintaining three points of contact.</p>
-        <ul class="p">
-          <li>Performed by the person at risk.</li>
-          <li>Effectiveness depends on consistency and attention.</li>
-          <li>Often the simplest, but also easiest to skip.</li>
-        </ul>
-      </article>
-
-      <article class="panel slide" hidden>
-        <h2 class="h2">Engineering Control</h2>
-        <p class="p">Engineering controls change the environment or equipment so the hazard is eliminated or exposure is reduced by design: e.g., machine guards, interlocks, airbags, lane assist.</p>
-        <ul class="p">
-          <li>Built into tools, equipment, or workspace layout.</li>
-          <li>Works regardless of individual behavior.</li>
-          <li>Preferred when feasible because it’s reliable and scalable.</li>
-        </ul>
-      </article>
-
-      <article class="panel slide" hidden>
-        <h2 class="h2">Administrative Control</h2>
-        <p class="p">Administrative controls are rules and guidance that influence how work is performed: e.g., SOPs, signage, permits to work, and training.</p>
-        <ul class="p">
-          <li>Relies on people following procedures.</li>
-          <li>Often necessary but weaker than engineering solutions.</li>
-          <li>Great when combined with other control types.</li>
-        </ul>
-      </article>
-
-      <article class="panel slide" hidden>
-        <h2 class="h2">Better Than Nothing (BTN)</h2>
-        <p class="p">BTN measures give some benefit but don’t remove the hazard or provide strong risk reduction: e.g., glancing in a mirror without a blind‑spot monitor, or a reminder note instead of a guard.</p>
-        <ul class="p">
-          <li>Can improve awareness, but limited protection.</li>
-          <li>Use BTN only until a stronger control is available.</li>
-          <li>Aim to upgrade BTN to Direct, Administrative, or Engineering controls.</li>
-        </ul>
-      </article>
-
-      <article class="panel slide" hidden>
-        <h2 class="h2">Ready to Play</h2>
-        <p class="p">Check the box to acknowledge you’ve reviewed all control types. This will unlock the game.</p>
-        <label class="p">
-          <input type="checkbox" id="ack" /> I understand the differences between the four control types.
-        </label>
-        <div class="row">
-          <a id="startGameBtn" class="btn" href="../game/index.html" hidden>Start Game</a>
-        </div>
-        <p class="p">You can revisit learning anytime from the results screen.</p>
-      </article>
-    </section>
+    <div class="footer">Compact screens. You can revisit learning anytime.</div>
   </div>
-
-  <script>
-  (function(){ 
-    const slides = Array.from(document.querySelectorAll('.slide')); 
-    const total = slides.length; 
-    let i = 0; 
-    const bar = document.getElementById('bar'); 
-    const badge = document.getElementById('progressBadge'); 
-    const prev = document.getElementById('prevBtn'); 
-    const next = document.getElementById('nextBtn'); 
-    const start = document.getElementById('startGameBtn'); 
-    const ack = document.getElementById('ack'); 
-    function render(){ 
-      slides.forEach((s,idx)=> s.hidden = idx !== i); 
-      const pct = Math.round(((i+1)/total)*100); 
-      if(bar) bar.style.width = pct + '%'; 
-      if(badge) badge.textContent = `${i+1} / ${total}`; 
-      if(prev) prev.disabled = (i === 0); 
-      if(next) next.hidden = (i === total - 1); 
-      const ready = (i === total - 1) && ack && ack.checked; 
-      if(start) start.hidden = !ready; 
-    } 
-    prev && prev.addEventListener('click',()=>{ if(i>0){ i--; render(); } }); 
-    next && next.addEventListener('click',()=>{ if(i<total-1){ i++; render(); } }); 
-    ack && ack.addEventListener('change',()=>{ 
-      if(ack.checked){ localStorage.setItem('learningCompleted', String(Date.now())); } 
-      else { localStorage.removeItem('learningCompleted'); } 
-      render(); 
-    }); 
-    if(localStorage.getItem('learningCompleted')){ if(ack) ack.checked = true; } 
-    render(); 
-  })();
-  </script>
+  <script src="learn.js"></script>
 </body>
 </html>

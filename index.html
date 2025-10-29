@@ -1,41 +1,52 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Safety Controls — Home</title>
-  <link rel="stylesheet" href="./assets/styles.css" />
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const play = document.getElementById('playBtn');
-      const note = document.getElementById('gateNote');
-      const done = !!localStorage.getItem('learningCompleted');
-      play.hidden = !done;
-      note.hidden = done;
-    });
-  </script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Safety Controls — Training & Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <div class="header compact">
       <div class="logo">
-        <img src="./assets/images/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-        <span>Safety Controls</span>
+        <img src="assets/images/logo.svg" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
+        <div>Safety Controls</div>
       </div>
+      <div id="learnBadge" class="badge" hidden>Learning Complete ✓</div>
     </div>
 
     <div class="panel">
-      <h1 class="h1">Welcome</h1>
-      <p class="p">Start with a quick primer on the four control types. Once you acknowledge you’ve reviewed them, the game will unlock.</p>
-      <div class="row">
-        <a class="btn" href="./learn/index.html">Start Learning</a>
-        <a id="playBtn" class="btn secondary" href="./game/index.html" hidden>Play the Game</a>
+      <h1 class="h1">Train quickly. Play the game.</h1>
+      <p class="p">Click through a few quick screens to learn the control types. When you finish, the game unlocks.</p>
+      <div class="row" style="margin-top:6px">
+        <a class="btn" href="learn/index.html">Start Learning</a>
+        <a class="btn secondary" id="playGameBtn" href="game/index.html" hidden>Play the Game</a>
       </div>
-      <p id="gateNote" class="p" style="margin-top:8px">The game appears after you complete learning.</p>
+      <hr/>
+      <div class="row">
+        <div class="col card">
+          <div class="h2">What you’ll learn</div>
+          <div class="p">Direct, Engineering, Administrative, and Better‑Than‑Nothing controls—what they are and when to use each.</div>
+        </div>
+        <div class="col card">
+          <div class="h2">Game flow</div>
+          <div class="p">Select all that apply. Submit to see feedback, then tap Next. No auto‑advance.</div>
+        </div>
+        <div class="col card">
+          <div class="h2">Finish strong</div>
+          <div class="p">You’ll get a fun title and comment at the end based on your score.</div>
+        </div>
+      </div>
+      <div class="footer">Need to re‑take the learning? You can revisit it anytime.</div>
     </div>
-
-    <div class="footer">Progress Rail • Scenario Game</div>
   </div>
+  <script>
+    const done = localStorage.getItem('learningCompleted');
+    const playBtn = document.getElementById('playGameBtn');
+    const badge = document.getElementById('learnBadge');
+    if(done){ playBtn.hidden = false; badge.hidden = false; }
+  </script>
 </body>
 </html>
