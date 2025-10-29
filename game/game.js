@@ -7,16 +7,15 @@
   const nextBtn = document.getElementById('nextBtn');
   const media = document.getElementById('media');
 
-  // End screen elements
   const scoreBadge = document.getElementById('scoreBadge');
-  const resultPanel = document.getElementById('resultPanel');
-  const quizPanel   = document.getElementById('quizPanel');
-  const scoreLine   = document.getElementById('scoreLine');
-  const funTitle    = document.getElementById('funTitle');
-  const funComment  = document.getElementById('funComment');
-  const playAgainBtn= document.getElementById('playAgainBtn');
+  const resultPanel= document.getElementById('resultPanel');
+  const quizPanel  = document.getElementById('quizPanel');
+  const scoreLine  = document.getElementById('scoreLine');
+  const funTitle   = document.getElementById('funTitle');
+  const funComment = document.getElementById('funComment');
+  const playAgainBtn = document.getElementById('playAgainBtn');
 
-  let i = 0, score = 0;
+  let i=0, score=0;
 
   function updateScoreBadge(){ scoreBadge.textContent = `${score} / ${QUESTIONS.length}`; }
 
@@ -25,19 +24,17 @@
     qText.textContent = q.text || q.question || '';
     qProgress.textContent = `Question ${i+1} of ${QUESTIONS.length}`;
     feedback.innerHTML = '';
-    nextBtn.hidden = true;         // hide Next until Submit every time
-    submitBtn.disabled = false;
 
-    // Ensure mid-game end screen isn't visible
-    resultPanel.hidden = true;     // keep end panel hidden during questions
+    nextBtn.hidden = true;           // hide Next until Submit
+    submitBtn.disabled = false;      // enable Submit
 
-    // Media
+    // media
     media.innerHTML = '';
     if(q.image){ const img = new Image(); img.src = q.image; img.alt=''; img.className='media-img'; media.appendChild(img); }
     if(q.video){ const v=document.createElement('video'); v.src=q.video; v.controls=true; v.playsInline=true; v.preload='metadata'; media.appendChild(v); }
 
-    // Options
-    optionsEl.innerHTML='';
+    // options
+    optionsEl.innerHTML = '';
     const opts = q.options && q.options.length ? q.options : ["Direct Control","Engineering Control","Administrative Control","Better Than Nothing"];
     opts.forEach((opt,idx)=>{
       const id = `opt_${i}_${idx}`;
@@ -54,28 +51,27 @@
     const q = QUESTIONS[i];
     const chosen  = Array.from(optionsEl.querySelectorAll('input:checked')).map(el=>el.value);
     const correct = q.correct || [];
-    const isRight = arraysEqual(chosen, correct); // ALL or NOTHING
+    const isRight = arraysEqual(chosen, correct); // all-or-nothing
 
     if(isRight) score++;
     updateScoreBadge();
 
-    // Lock and switch controls
+    // Lock choices; hide Submit; reveal Next
     optionsEl.querySelectorAll('input').forEach(el=>el.disabled=true);
     submitBtn.disabled = true;
-    nextBtn.hidden = false; // reveal Next only after Submit
+    nextBtn.hidden = false;
 
-    // Feedback
+    // Feedback text
     const goodTag = `<span class='tag good'>Correct</span>`;
     const badTag  = `<span class='tag bad'>Not quite</span>`;
     const missed  = correct.filter(c=>!chosen.includes(c));
     const extra   = chosen.filter(c=>!correct.includes(c));
     let detail    = q.explanation||'';
     if(missed.length){ detail += `${detail?' ':''}Missing: ${missed.join(', ')}.` }
-    if(extra.length){  detail += `${detail?' ':''}Not required: ${extra.join(', ')}.` }
+    if(extra.length){ detail += `${detail?' ':''}Not required: ${extra.join(', ')}.` }
     feedback.innerHTML = `${isRight?goodTag:badTag} <div class='p' style='margin-top:6px'>${detail}</div>`;
   }
 
-  // Fun end comments from your original version
   function getGradingComment(score, total){
     const percent = (score/total)*100;
     let comments = [];
@@ -93,21 +89,19 @@
   }
 
   function showResults(){
-    quizPanel.hidden = true;
-    resultPanel.hidden = false; // only show now
+    quizPanel.hidden = true; resultPanel.hidden = false;
     const pct = Math.round((score/QUESTIONS.length)*100);
     scoreLine.textContent = `Score ${score}/${QUESTIONS.length} (${pct}%)`;
-    funTitle.textContent  = pickTitle(pct);
-    funComment.textContent= getGradingComment(score, QUESTIONS.length);
+    funTitle.textContent = pickTitle(pct);
+    funComment.textContent = getGradingComment(score, QUESTIONS.length);
   }
 
   // Events
   submitBtn.addEventListener('click', evaluate);
   nextBtn.addEventListener('click', ()=>{ if(i<QUESTIONS.length-1){ i++; renderQuestion(); } else { showResults(); } });
-  playAgainBtn.addEventListener('click', ()=>{ i=0; score=0; updateScoreBadge(); quizPanel.hidden=false; resultPanel.hidden=true; renderQuestion(); });
+  playAgainBtn.addEventListener('click', ()=>{ i=0; score=0; updateScoreBadge(); resultPanel.hidden=true; quizPanel.hidden=false; renderQuestion(); });
 
   // Init
   updateScoreBadge();
-  resultPanel.hidden = true; // ensure hidden at start
   renderQuestion();
 })();
