@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Game — Safety Controls</title>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=3"/>
 </head>
 <body>
   <div class="container">
@@ -25,12 +25,15 @@
         <div class="tag" id="qProgress">Question 1</div>
         <h1 class="h2" id="qText">Question text...</h1>
         <div id="media" class="media"></div>
+
         <div class="p">Select all that apply:</div>
         <div class="options" id="options"></div>
+
         <div style="display:flex;gap:8px;margin-top:6px">
           <button class="btn" id="submitBtn">Submit</button>
           <button class="btn secondary" id="nextBtn" hidden>Next</button>
         </div>
+
         <div id="feedback"></div>
       </div>
     </div>
@@ -51,7 +54,7 @@
   <script>
     if(!localStorage.getItem('learningCompleted')){ location.replace('../learn/index.html'); }
   </script>
-  <script src="questions.js"></script>
-  <script src="game.js"></script>
+  <script src="questions.js?v=3"></script>
+  <script src="game.js?v=3"></script>
 </body>
 </html>
