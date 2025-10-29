@@ -1,0 +1,1 @@
+Place your MP4 clips here. Example: sample.mp4

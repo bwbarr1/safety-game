@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scenario 01 – Safety Game</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <meta name="theme-color" content="#0f766e"/>
+  <link rel="icon" href="../assets/images/icons/icon-192.png" sizes="192x192">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script defer src="../js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><span class="logo" aria-hidden="true">🛡️</span><h1>Safety Game</h1></div>
+    <nav aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../intro.html">Control Types</a>
+      <a href="./scenario-01.html" aria-current="page">Scenario 01</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Scenario 01: Forklift & Pedestrian Aisle</h2>
+      <p class="muted">Sample clip shown below (replace with your own short video in <code>assets/video/</code> and update the <code>src</code>).</p>
+
+      <div class="video-wrap">
+        <video controls preload="metadata" width="100%">
+          <source src="../assets/video/sample.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <form id="quizForm" class="quiz" data-scenario-id="scenario-01">
+        <fieldset>
+          <legend>Which controls best reduce the risk? (Select all that apply)</legend>
+          <label class="option"><input type="checkbox" name="opt" value="direct"> Re-route foot traffic so pedestrians never enter forklift lanes (Direct Control)</label>
+          <label class="option"><input type="checkbox" name="opt" value="engineering"> Install physical guardrails between lanes (Engineering Control)</label>
+          <label class="option"><input type="checkbox" name="opt" value="btn"> Place cones and a handwritten sign (Better Than Nothing)</label>
+          <label class="option"><input type="checkbox" name="opt" value="tbd"> Fourth Control (TBD label)</label>
+        </fieldset>
+
+        <div class="cta-row">
+          <button class="btn primary" type="submit">Submit</button>
+          <button class="btn" type="button" id="showAnswerBtn">Show Answer</button>
+        </div>
+      </form>
+
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+
+      <nav class="pager">
+        <a class="btn" href="../index.html">⬅ Back</a>
+        <a class="btn disabled" aria-disabled="true" tabindex="-1" href="#">Next Scenario</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; <span id="year"></span> Safety Game</small>
+  </footer>
+  <script defer src="../js/sw-register.js"></script>
+  <script>
+    // Scenario-specific answer key & feedback (multiple correct allowed)
+    const ANSWER_KEY = new Set(["direct","engineering"]);
+
+    function evaluate(choices){
+      const selected = new Set(choices);
+      const correctSelected = [...selected].filter(v => ANSWER_KEY.has(v)).length;
+      const missed = [...ANSWER_KEY].filter(v => !selected.has(v)).length;
+      const incorrect = [...selected].filter(v => !ANSWER_KEY.has(v)).length;
+      return {correctSelected, missed, incorrect, isPerfect: correctSelected === ANSWER_KEY.size && incorrect === 0};
+    }
+
+    function showOfficialAnswer(){
+      const container = document.getElementById('feedback');
+      container.innerHTML = `<div class="callout info"><strong>Official Answer:</strong> Direct Control and Engineering Control are the best options here. Cones/signs are only a stopgap.</div>`;
+    }
+
+    document.getElementById('showAnswerBtn').addEventListener('click', showOfficialAnswer);
+
+    document.getElementById('quizForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const choices = [...form.querySelectorAll('input[name="opt"]:checked')].map(i => i.value);
+      const result = evaluate(choices);
+
+      // Save progress
+      window.SG && window.SG.recordResult(form.dataset.scenarioId, result.isPerfect);
+
+      const fb = document.getElementById('feedback');
+      if(result.isPerfect){
+        fb.innerHTML = `<div class="callout success">Nice! You chose the strongest controls. ✅</div>`;
+      } else {
+        const parts = [];
+        if(result.missed) parts.push(`${result.missed} strong option(s) missed`);
+        if(result.incorrect) parts.push(`${result.incorrect} weak/irrelevant option(s) selected`);
+        fb.innerHTML = `<div class="callout warn">Not quite: ${parts.join(' and ')}. Try again or tap <em>Show Answer</em>.</div>`;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Safety Game</title>
+  <meta name="description" content="Interactive safety training game with short video scenarios and control types." />
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#0f766e"/>
+  <link rel="icon" href="./assets/images/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="./assets/images/icons/icon-192.png"/>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🛡️</span>
+      <h1>Safety Game</h1>
+    </div>
+    <nav aria-label="Main">
+      <a href="./index.html" aria-current="page">Home</a>
+      <a href="./intro.html">Control Types</a>
+      <a href="./scenarios/scenario-01.html">Sample Scenario</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h2>Welcome</h2>
+      <p>Practice choosing the best safety control for each scenario. Some questions may have more than one correct answer.</p>
+      <ul class="bullets">
+        <li>Short video clips (mobile-friendly)</li>
+        <li>Multiple correct answers supported</li>
+        <li>Scores saved on your device</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="./intro.html">Learn the Control Types</a>
+        <a class="btn" href="./scenarios/scenario-01.html">Try a Sample Scenario</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Your Progress</h3>
+      <div id="progress" class="progress"></div>
+      <button class="btn" id="resetProgressBtn" type="button">Reset Progress</button>
+    </section>
+
+    <section class="card">
+      <h3>About</h3>
+      <p>This site works offline after your first visit (installed as an app on supported devices). Add it to your home screen for quick access.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; <span id="year"></span> Safety Game</small>
+  </footer>
+
+  <script defer src="./js/sw-register.js"></script>
+</body>
+</html>
