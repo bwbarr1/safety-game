@@ -27,3 +27,16 @@
   margin-top: 12px;
 }
 
+/* Learn-only: make <button class="btn"> look identical to <a class="btn"> */
+.nav button.btn,
+.slide button.btn {
+  font: inherit;            /* inherit family + size so it matches <a> */
+  line-height: 1.2;         /* consistent text box height */
+  -webkit-appearance: none;
+  appearance: none;         /* neutralize native button styles */
+  background-clip: padding-box;
+  /* Re-assert vertical padding after appearance reset (some browsers tweak it) */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
