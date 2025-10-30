@@ -34,7 +34,60 @@
     // media
     media.innerHTML = '';
     if(q.image){ const img=new Image(); img.src=q.image; img.alt=''; img.className='media-img'; media.appendChild(img); }
-    if (q.video) { const v = document.createElement('video'); v.controls = true; v.preload = 'metadata'; v.setAttribute('playsinline', ''); const src = document.createElement('source'); src.src = q.video; src.type = 'video/mp4'; v.appendChild(src); media.appendChild(v); v.load(); }
+    if (q.video) {
+  const v = document.createElement('video');
+
+  // --- Autoplay + loop essentials ---
+  v.muted = true;                 // required for autoplay across browsers
+  v.autoplay = true;              // tell the browser to start automatically
+  v.loop = true;                  // repeat forever
+  v.playsInline = true;           // JS property
+  v.setAttribute('playsinline', ''); // iOS requires the attribute form too
+  v.setAttribute('muted', '');       // Safari/iOS quirk: keep it muted
+
+  // Optional UI choices:
+  v.controls = true;              // keep controls visible; set false if you want a clean loop
+  v.preload = 'metadata';         // or 'auto' if you want it to preload more aggressively
+  v.className = 'media-video';
+
+  // Use a <source> for best compatibility and to set the MIME type
+  const src = document.createElement('source');
+  src.src = q.video;              // e.g., "../assets/videos/airbag.mp4"
+  src.type = 'video/mp4';
+  v.appendChild(src);
+
+  media.appendChild(v);
+  v.load();                       // after changing/adding <source>
+
+  // Try to start playback. If the browser blocks it, show a friendly prompt.
+  const tryPlay = () =>
+    v.play().catch(() => {
+      // Create a lightweight overlay button to satisfy user gesture requirements
+      const overlay = document.createElement('button');
+      overlay.type = 'button';
+      overlay.className = 'tap-to-play';
+      overlay.textContent = 'Tap to play';
+      // Position the overlay right after the video; CSS can place it over the video
+      v.after(overlay);
+      overlay.addEventListener('click', () => {
+        v.play().then(() => overlay.remove());
+      }, { once: true });
+    });
+
+  // If the tab is visible, try now; otherwise wait until it’s visible.
+  if (document.visibilityState === 'visible') {
+    tryPlay();
+  } else {
+    const onVis = () => {
+      if (document.visibilityState === 'visible') {
+        tryPlay();
+        document.removeEventListener('visibilitychange', onVis);
+      }
+    };
+    document.addEventListener('visibilitychange', onVis);
+  }
+}
+
 
     // options
     optionsEl.innerHTML = '';
