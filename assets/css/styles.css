@@ -62,6 +62,16 @@ button.btn {
   /* padding-bottom: 10px; */
 }
 
+
+/* --- Remove the bright top rim on brand buttons --- */
+.btn {
+  /* keep your existing properties; we’re overriding just these two */
+  border-color: var(--brand-600);           /* was #fef08a (very light) */
+  box-shadow: 0 10px 22px rgba(255,205,17,.24);  /* remove the inset white highlight */
+  background-clip: padding-box;             /* ensure gradient doesn't bleed into the border */
+}
+
+
 .card{background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:10px}
 .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;padding:2px 6px;border-radius:6px;background:#f1f5f9;border:1px solid var(--line)}
 .footer{margin-top:14px;color:#64748b;font-size:13px}
