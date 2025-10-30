@@ -34,7 +34,7 @@
     // media
     media.innerHTML = '';
     if(q.image){ const img=new Image(); img.src=q.image; img.alt=''; img.className='media-img'; media.appendChild(img); }
-    if(q.video){ const v=document.createElement('video'); v.src=q.video; v.controls=true; v.playsInline=true; v.preload='metadata'; media.appendChild(v); }
+    if (q.video) { const v = document.createElement('video'); v.controls = true; v.preload = 'metadata'; v.setAttribute('playsinline', ''); const src = document.createElement('source'); src.src = q.video; src.type = 'video/mp4'; v.appendChild(src); media.appendChild(v); v.load(); }
 
     // options
     optionsEl.innerHTML = '';
