@@ -7,7 +7,6 @@
   const submitBtn = document.getElementById('submitBtn');
   const nextBtn = document.getElementById('nextBtn');
   const media = document.getElementById('media');
-  const scoreBadge = document.getElementById('scoreBadge');
   const resultPanel = document.getElementById('resultPanel');
   const quizPanel = document.getElementById('quizPanel');
   const scoreLine = document.getElementById('scoreLine');
@@ -21,9 +20,6 @@
   // Announce validation and results to assistive tech
   try { feedback.setAttribute('aria-live','polite'); feedback.setAttribute('role','status'); } catch(e){}
 
-  function updateScoreBadge(){
-    if (scoreBadge) scoreBadge.textContent = `${score} / ${QUESTIONS.length}`;
-  }
 
   function renderQuestion(){
     const q = QUESTIONS[i];
