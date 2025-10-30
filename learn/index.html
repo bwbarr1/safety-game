@@ -1,30 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Learn — Safety Controls</title>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/styles.css"/>
-  <link rel="stylesheet" href="learn.css"/>
+  <link rel="preload" as="image" href="../assets/images/logo.png">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="learn.css">
 </head>
 <body>
   <div class="container">
-    <div class="header compact">
-      <div class="logo">
-        <img src="../assets/images/logo.png" alt="Progress Rail" class="logo-img" onerror="this.style.display='none'">
-        <div>Learning Module</div>
-      </div>
-      
+    <header class="header compact">
+      <a href="../index.html" class="logo" aria-label="Home">
+        <img src="../assets/images/logo.png" alt="Progress Rail" class="logo-img" />
+      </a>
+      <span class="module-label">Learning Module</span>
+    </header>
+
+    <!-- Progress Bar (numeric badge removed intentionally) -->
+    <div class="progress" aria-label="Learning progress">
+      <div id="bar" style="width:0"></div>
     </div>
 
-    <div class="panel">
-      <div class="progress"><div id="bar"></div></div>
-
-      <section class="slide" data-index="0">
-        <h1 class="h2">Welcome</h1>
+    <!-- Slides -->
+    <div id="slides" class="grid" style="margin-top:12px">
+      <!-- Slide 1: Welcome -->
+      <section class="slide panel">
+        <h1 class="h1">Welcome</h1>
         <p class="p">Five short screens. Then you’ll unlock the game.</p>
-        <ul>
+        <ul class="p">
           <li>Direct Controls</li>
           <li>Engineering Controls</li>
           <li>Administrative Controls</li>
@@ -32,43 +36,47 @@
         </ul>
       </section>
 
-      <section class="slide" data-index="1" hidden>
+      <!-- Slide 2: Direct Controls -->
+      <section class="slide panel" hidden>
         <h2 class="h2">Direct Controls</h2>
-        <p class="p">Immediate actions to manage risk (seatbelt, spotter, wearing PPE correctly).</p>
-        <div class="alert">Pros: Instant. Cons: Relies on behavior.</div>
+        <p class="p">Immediate actions to manage risk (seatbelt, spotter, wearing PPE correctly). Pros: Instant. Cons: Relies on behavior.</p>
       </section>
 
-      <section class="slide" data-index="2" hidden>
+      <!-- Slide 3: Engineering Controls -->
+      <section class="slide panel" hidden>
         <h2 class="h2">Engineering Controls</h2>
-        <p class="p">Design features that remove or reduce the hazard (guards, interlocks, lane‑keep assist).</p>
-        <div class="alert">Pros: Reliable. Cons: May require investment.</div>
+        <p class="p">Design features that remove or reduce the hazard (guards, interlocks, lane‑keep assist). Pros: Reliable. Cons: May require investment.</p>
       </section>
 
-      <section class="slide" data-index="3" hidden>
+      <!-- Slide 4: Administrative Controls -->
+      <section class="slide panel" hidden>
         <h2 class="h2">Administrative Controls</h2>
-        <p class="p">Procedures/training that influence how work is done (signage, SOPs, checklists).</p>
-        <div class="alert">Pros: Scalable. Cons: Requires adherence.</div>
+        <p class="p">Procedures/training that influence how work is done (signage, SOPs, checklists). Pros: Scalable. Cons: Requires adherence.</p>
       </section>
 
-      <section class="slide" data-index="4" hidden>
+      <!-- Slide 5: Better Than Nothing -->
+      <section class="slide panel" hidden>
         <h2 class="h2">Better Than Nothing</h2>
-        <p class="p">Not ideal, but improves awareness when higher‑order controls aren’t available.</p>
-        <div class="alert" style="background:#fff8db;border-color:#fde68a">Aim for the strongest control available. Better Than Nothing is a last resort.</div>
-        <hr/>
-        <label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="ack"/> I’ve reviewed and understand these control types.</label>
-      </section>
+        <p class="p">Not ideal, but improves awareness when higher‑order controls aren’t available. Aim for the strongest control available. Better Than Nothing is a last resort.</p>
 
-      <div class="nav">
-        <button class="btn ghost" id="prevBtn">Back</button>
-        <div style="flex:1"></div>
-        <a class="btn ghost" href="../index.html">Exit</a>
-        <button class="btn secondary" id="nextBtn">Next</button>
-        <a class="btn" id="startGameBtn" href="../game/index.html" hidden>Play the Game</a>
-      </div>
+        <label class="p" style="display:flex; align-items:center; gap:8px; margin-top:8px">
+          <input type="checkbox" id="ack" />
+          <span>I’ve reviewed and understand these control types.</span>
+        </label>
+      </section>
     </div>
 
-    <div class="footer">Compact screens. You can revisit learning anytime.</div>
+    <!-- Nav / Actions -->
+    <div class="nav" style="margin-top:12px">
+      <button type="button" id="prevBtn" class="btn ghost">Back</button>
+      <button type="button" id="nextBtn" class="btn">Next</button>
+      <a href="../index.html" class="btn ghost" style="margin-left:auto">Exit</a>
+      <a href="../game/index.html" id="startGameBtn" class="btn secondary" hidden>Play the Game</a>
+    </div>
+
+    <footer class="footer">Compact screens. You can revisit learning anytime.</footer>
   </div>
+
   <script src="learn.js"></script>
 </body>
 </html>
