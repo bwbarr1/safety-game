@@ -58,5 +58,14 @@ hr{border:none;border-top:1px solid var(--line);margin:10px 0}
 .title{font-size:28px;font-weight:900}
 .comment{color:#0f172a}
 .media video,.media img{max-width:100%;border-radius:12px;border:1px solid var(--line);max-height:340px;object-fit:cover}
+.media-video {
+  pointer-events: none; 
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.media-video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
 .header.compact{position:sticky;top:0;background:linear-gradient(180deg,#fffce8,#ffffff);padding:10px 0;margin:0 0 10px;z-index:2;border-bottom:1px solid var(--line)}
 @media (max-width:640px){.container{padding:12px}}
