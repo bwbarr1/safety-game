@@ -70,4 +70,23 @@ hr{border:none;border-top:1px solid var(--line);margin:10px 0}
   display: none !important;
 }
 .header.compact{position:sticky;top:0;background:linear-gradient(180deg,#fffce8,#ffffff);padding:10px 0;margin:0 0 10px;z-index:2;border-bottom:1px solid var(--line)}
+
+/* --- Hotfix: keep game media and choices inside the panel --- */
+
+/* Apply media sizing whether the container is #media or .media,
+   and also to videos we mark with .media-video */
+#media video, #media img,
+.media video, .media img,
+.media-video {
+  max-width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+/* If anything still overflows due to large content, clip inside the panel */
+.panel { overflow: hidden; }
+
 @media (max-width:640px){.container{padding:12px}}
