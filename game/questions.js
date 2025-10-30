@@ -7,22 +7,22 @@ const QUESTIONS = [
   explanation: "Airbags are engineering controls; relying on them correctly also involves a direct action (proper restraint)."
 },
   {
-    text: "What type of control is lane assist in a vehicle?",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lane_assist_warning.jpg/640px-Lane_assist_warning.jpg",
+    text: "What type of control is using the rear view mirror in a vehicle?",
+    video: "../assets/videos/rearviewmirror.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
     correct: ["Engineering Control"],
     explanation: "A built‑in feature that reduces risk by design—engineering control."
   },
   {
-    text: "What type of control is using a rear-view mirror?",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Rear_view_mirror.jpg/640px-Rear_view_mirror.jpg",
+    text: "What type of control is using the foot brake?",
+    video: "../assets/videos/footbrake.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
     correct: ["Better Than Nothing"],
     explanation: "Improves awareness but doesn’t remove the hazard—better than nothing."
   },
   {
     text: "What type of control is using side-view mirrors?",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Side_mirror.jpg/640px-Side_mirror.jpg",
+    video: "../assets/videos/sideviewmirror.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
     correct: ["Better Than Nothing"],
     explanation: "Similar to rear-view mirrors—minimal improvement, still BTN."
