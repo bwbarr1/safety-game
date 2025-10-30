@@ -2,12 +2,15 @@
 .slide ul{margin:6px 0 0 18px}
 
 
-/* === Header layout for Learning page: keep logo left, move title right === */
-header, .header { display: flex; align-items: center; padding-inline: 16px; }
-/* Prefer a named element if present */
-header > .module-label, .header > .module-label { margin-left: auto; font-weight: 800; color: var(--ink-2); }
-/* Fallback: if no class, push the last child to the right */
-header > :last-child, .header > :last-child { margin-left: auto; }
+/* === v2: Precise header alignment for Learning page === */
+/* Make header a flex row and keep consistent side padding */
+header, .header { display: flex; align-items: center; gap: 10px; padding-inline: 16px; }
+
+/* Put the Learning Module label on the far right (requires .module-label in markup) */
+header .module-label, .header .module-label { margin-left: auto; font-weight: 800; color: var(--ink-2); }
+
+/* Neutralize any previous fallback that pushed :last-child to the right */
+header > :last-child, .header > :last-child { margin-left: initial; }
 
 @supports (padding: max(0px)) {
   header, .header {
