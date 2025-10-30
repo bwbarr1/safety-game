@@ -70,7 +70,44 @@ hr{border:none;border-top:1px solid var(--line);margin:10px 0}
   display: none !important;
 }
 .header.compact{position:sticky;top:0;background:linear-gradient(180deg,#fffce8,#ffffff);padding:10px 0;margin:0 0 10px;z-index:2;border-bottom:1px solid var(--line)}
+/* === Logo breathing room + responsive size === */
 
+/* Add side padding so the header content isn't crammed against the edges */
+.header,
+.header.compact {
+  padding-inline: 16px;               /* left & right */
+}
+
+/* Shrink the logo a touch and keep it responsive */
+.logo .logo-img {
+  height: clamp(24px, 5vw, 32px);     /* was 36px */
+  width: auto;
+}
+
+/* Add a little internal cushion around the logo hit-area */
+.logo {
+  padding: 4px 10px;
+  margin-right: 12px;                 /* space between logo and next item */
+}
+
+/* Tune for small phones */
+@media (max-width: 480px) {
+  .header,
+  .header.compact { padding-inline: 14px; }
+
+  .logo .logo-img { height: 26px; }
+
+  .logo { padding: 3px 8px; margin-right: 10px; }
+}
+
+/* Optional (iPhone safe-areas): keep clear of notches/rounded corners */
+@supports (padding: max(0px)) {
+  .header,
+  .header.compact {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}
 /* --- Subtle shake for invalid submit clicks --- */
 @keyframes btn-shake {
   0%, 100% { transform: translateX(0); }
