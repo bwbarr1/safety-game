@@ -15,3 +15,15 @@
   margin-top: 12px; /* Adjust if you want more or less space */
 }
 
+/* Space under the progress bar container */
+.slide .progress { 
+  margin-bottom: 14px;  /* adjust to taste (12–16px) */
+}
+
+/* Breathing room above headings on Learn slides */
+.slide h2,
+.slide h3,
+.slide .h2 {            /* covers cases where you used the .h2 utility class */
+  margin-top: 12px;
+}
+
