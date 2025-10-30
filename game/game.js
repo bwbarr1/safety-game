@@ -8,8 +8,6 @@
   const nextBtn = document.getElementById('nextBtn');
   const media = document.getElementById('media');
   const scoreBadge = document.getElementById('scoreBadge');
- // Remove live score from the header to declutter on mobile
- if (scoreBadge) { try { scoreBadge.remove(); } catch(e) { scoreBadge.style.display = 'none'; } }
   const resultPanel = document.getElementById('resultPanel');
   const quizPanel = document.getElementById('quizPanel');
   const scoreLine = document.getElementById('scoreLine');
@@ -23,7 +21,8 @@
   // Announce validation and results to assistive tech
   try { feedback.setAttribute('aria-live','polite'); feedback.setAttribute('role','status'); } catch(e){}
 
-  function updateScoreBadge(){ /* live score removed */ } / ${QUESTIONS.length}`;
+  function updateScoreBadge(){
+    if (scoreBadge) scoreBadge.textContent = `${score} / ${QUESTIONS.length}`;
   }
 
   function renderQuestion(){
