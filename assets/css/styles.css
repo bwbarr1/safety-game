@@ -40,6 +40,28 @@ body{
 .btn.secondary{font-weight:800;background:linear-gradient(180deg,#e0f2fe,#bae6fd);border-color:#bae6fd}
 .btn.ghost{background:#ffffff;color:var(--ink);border:1px solid var(--line)}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* === Global button normalization so <button class="btn"> == <a class="btn"> === */
+
+/* Keep anchors and buttons on the same typographic baseline */
+.btn {
+  font-family: inherit;   /* use the site font */
+  font-size: inherit;     /* use the page's base size */
+  line-height: 1.2;       /* consistent text box height */
+  vertical-align: middle; /* helps inline alignment in mixed contexts */
+}
+
+/* Neutralize native button styling without clobbering .btn's font-weight (800) */
+button.btn {
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+  margin: 0;              /* some browsers add default margins to <button> */
+  /* Optional: If iOS/Safari compresses the vertical box slightly, un-comment: */
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
+}
+
 .card{background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:10px}
 .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;padding:2px 6px;border-radius:6px;background:#f1f5f9;border:1px solid var(--line)}
 .footer{margin-top:14px;color:#64748b;font-size:13px}
