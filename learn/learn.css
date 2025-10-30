@@ -27,16 +27,23 @@
   margin-top: 12px;
 }
 
-/* Learn-only: make <button class="btn"> look identical to <a class="btn"> */
+/* 1) Normalize buttons on Learn pages WITHOUT wiping out .btn's font-weight */
 .nav button.btn,
 .slide button.btn {
-  font: inherit;            /* inherit family + size so it matches <a> */
-  line-height: 1.2;         /* consistent text box height */
+  font-family: inherit;   /* keep the site font */
+  font-size: inherit;     /* keep the same size as anchors */
+  /* don't set font-weight here—let .btn's 800 win */
+  line-height: 1.2;       /* match anchors' computed line-height */
   -webkit-appearance: none;
-  appearance: none;         /* neutralize native button styles */
+  appearance: none;       /* neutralize native button styling */
   background-clip: padding-box;
-  /* Re-assert vertical padding after appearance reset (some browsers tweak it) */
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 0;              /* some browsers add default margins to buttons */
+}
+
+/* 2) Ensure both anchors and buttons share the same line-height for perfect alignment */
+.nav .btn,
+.slide .btn {
+  line-height: 1.2;       /* anchors now match the buttons' line-height exactly */
+  vertical-align: middle; /* belt-and-suspenders for inline alignment scenarios */
 }
 
