@@ -1,7 +1,7 @@
 const QUESTIONS = [
 {
   text: "What type of control is shown in the video below?",
-  video: "assets/videos/airbag.mp4",
+  video: "../assets/videos/airbag.mp4",
   options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
   correct: ["Direct Control", "Engineering Control"],
   explanation: "Airbags are engineering controls; relying on them correctly also involves a direct action (proper restraint)."
