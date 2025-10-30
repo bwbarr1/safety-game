@@ -71,6 +71,31 @@ hr{border:none;border-top:1px solid var(--line);margin:10px 0}
 }
 .header.compact{position:sticky;top:0;background:linear-gradient(180deg,#fffce8,#ffffff);padding:10px 0;margin:0 0 10px;z-index:2;border-bottom:1px solid var(--line)}
 
+/* --- Subtle shake for invalid submit clicks --- */
+@keyframes btn-shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-4px); }
+  40%      { transform: translateX(4px); }
+  60%      { transform: translateX(-3px); }
+  80%      { transform: translateX(3px); }
+}
+
+/* Works whether your button has class="btn" or not */
+#submitBtn.btn-shake,
+.btn.btn-shake {
+  animation: btn-shake 260ms ease;
+  will-change: transform;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #submitBtn.btn-shake,
+  .btn.btn-shake {
+    animation: none;
+  }
+}
+
+
 /* --- Hotfix: keep game media and choices inside the panel --- */
 
 /* Apply media sizing whether the container is #media or .media,
