@@ -37,56 +37,53 @@
     if (q.video) {
   const v = document.createElement('video');
 
-  // --- Autoplay + loop essentials ---
-  v.muted = true;                 // required for autoplay across browsers
-  v.autoplay = true;              // tell the browser to start automatically
-  v.loop = true;                  // repeat forever
-  v.playsInline = true;           // JS property
-  v.setAttribute('playsinline', ''); // iOS requires the attribute form too
-  v.setAttribute('muted', '');       // Safari/iOS quirk: keep it muted
+  // --- clean, background-style playback ---
+  v.muted = true;                     // required for reliable autoplay
+  v.autoplay = true;                  // start automatically
+  v.loop = true;                      // repeat forever
+  v.playsInline = true;               // JS property
+  v.setAttribute('playsinline', '');  // iOS Safari needs the attribute too
+  v.setAttribute('muted', '');        // strengthen autoplay on Safari/iOS
+  v.preload = 'auto';                 // or 'metadata' if you prefer lighter load
 
-  // Optional UI choices:
-  v.controls = true;              // keep controls visible; set false if you want a clean loop
-  v.preload = 'metadata';         // or 'auto' if you want it to preload more aggressively
-  v.className = 'media-video';
+  // Absolutely no native controls or overlays
+  v.controls = false;                 // don't show the UI
+  v.disablePictureInPicture = true;   // Chrome/Edge: hide PiP button
+  v.setAttribute('disablepictureinpicture', '');
 
-  // Use a <source> for best compatibility and to set the MIME type
+  // Non-interactive / non-focusable for keyboard users
+  v.setAttribute('aria-hidden', 'true');
+  v.tabIndex = -1;
+
+  // (Optional) poster to avoid a black frame if autoplay is delayed
+  // v.poster = '../assets/images/video-poster.jpg';
+
+  // Use a <source> with MIME for best compatibility
   const src = document.createElement('source');
-  src.src = q.video;              // e.g., "../assets/videos/airbag.mp4"
+  src.src = q.video;                  // e.g., "../assets/videos/airbag.mp4"
   src.type = 'video/mp4';
   v.appendChild(src);
 
+  v.className = 'media-video';
   media.appendChild(v);
-  v.load();                       // after changing/adding <source>
 
-  // Try to start playback. If the browser blocks it, show a friendly prompt.
-  const tryPlay = () =>
-    v.play().catch(() => {
-      // Create a lightweight overlay button to satisfy user gesture requirements
-      const overlay = document.createElement('button');
-      overlay.type = 'button';
-      overlay.className = 'tap-to-play';
-      overlay.textContent = 'Tap to play';
-      // Position the overlay right after the video; CSS can place it over the video
-      v.after(overlay);
-      overlay.addEventListener('click', () => {
-        v.play().then(() => overlay.remove());
-      }, { once: true });
-    });
+  // Load and attempt to start playback
+  v.load();
+  const start = () => v.play().catch(() => {/* keep silent: no UI, no controls */});
 
-  // If the tab is visible, try now; otherwise wait until it’s visible.
   if (document.visibilityState === 'visible') {
-    tryPlay();
+    start();
   } else {
     const onVis = () => {
       if (document.visibilityState === 'visible') {
-        tryPlay();
+        start();
         document.removeEventListener('visibilitychange', onVis);
       }
     };
     document.addEventListener('visibilitychange', onVis);
   }
 }
+
 
 
     // options
