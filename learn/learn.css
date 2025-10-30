@@ -26,4 +26,64 @@
 .slide .h2 {            /* covers cases where you used the .h2 utility class */
   margin-top: 12px;
 }
+/* Make Back/Next the same visual size and weight as the shared .btn */
+#prevBtn,
+#nextBtn {
+  /* Reset the native button look enough to match .btn */
+  -webkit-appearance: none;
+  appearance: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  /* Match .btn sizing */
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #fef08a;
+
+  /* Typography */
+  font-weight: 800;
+  /* If Exit looks bigger, you can uncomment the next line to force size */
+  /* font-size: 16px; */
+  line-height: 1.2;
+
+  cursor: pointer;
+  text-decoration: none;
+  color: #111827;
+
+  /* Primary brand gradient (same feel as .btn) */
+  background: linear-gradient(180deg, var(--brand), var(--brand-600));
+  box-shadow: 0 10px 22px rgba(255,205,17,.28), inset 0 1px 0 rgba(255,255,255,.7);
+
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+/* Disabled state parity with .btn[disabled] */
+#prevBtn[disabled] {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* If you want BACK to be a lighter (ghost) style while still the same size: */
+#prevBtn {
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+/* Optional: focus ring for keyboard users */
+#prevBtn:focus-visible,
+#nextBtn:focus-visible {
+  outline: 3px solid #bae6fd;
+  outline-offset: 2px;
+}
 
