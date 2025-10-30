@@ -1,2 +1,13 @@
 .nav{display:flex;align-items:center;gap:8px;margin-top:10px}
 .slide ul{margin:6px 0 0 18px}
+
+/* Progress-aware spacing: only applies when <html> has .has-progress */
+.has-progress #bar {
+  margin-bottom: 12px; /* tweak as needed: 12–16px works nicely */
+}
+
+.has-progress .slide h2,
+.has-progress .slide h3 {
+  margin-top: 12px; /* tweak as needed */
+}
+
