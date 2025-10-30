@@ -18,3 +18,16 @@ header > :last-child, .header > :last-child { margin-left: initial; }
     padding-right: max(16px, env(safe-area-inset-right));
   }
 }
+
+/* === Header layout: logo LEFT, label RIGHT === */
+header, .header { display: flex; align-items: center; gap: 10px; padding-inline: 16px; }
+/* Primary: explicit hook pushes the Learning Module label to the right */
+header .module-label, .header .module-label { margin-left: auto; font-weight: 800; color: var(--ink-2); }
+/* Fallback: if no module-label present, push the first child (logo) left and everything else right */
+header > :first-child, .header > :first-child { margin-right: auto; }
+@supports (padding: max(0px)) {
+  header, .header {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}

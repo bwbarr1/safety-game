@@ -13,7 +13,7 @@
     slides.forEach((s,idx)=> s.hidden = idx !== i);
     const pct = Math.round(((i+1)/total)*100);
     bar.style.width = pct + '%';
-    if (badge) badge.textContent = `${i+1} / ${total}`;
+    if (badge) if (badge) badge.textContent = `${i+1} / ${total}`;
     prev.disabled = (i === 0);
     next.hidden   = (i === total - 1); // hide Next on last slide
     const ready   = (i === total - 1) && ack && ack.checked;
