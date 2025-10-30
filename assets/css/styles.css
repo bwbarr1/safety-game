@@ -63,13 +63,11 @@ button.btn {
 }
 
 
-/* --- Remove the bright top rim on brand buttons --- */
+
 .btn {
-  /* keep your existing properties; we’re overriding just these two */
-  border-color: var(--brand-600);           /* was #fef08a (very light) */
-  box-shadow: 0 10px 22px rgba(255,205,17,.24);  /* remove the inset white highlight */
-  background-clip: padding-box;             /* ensure gradient doesn't bleed into the border */
+  box-shadow: 0 10px 22px rgba(255,205,17,.24); /* no inset */
 }
+
 
 
 .card{background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:10px}
