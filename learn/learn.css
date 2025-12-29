@@ -27,4 +27,30 @@
   margin-top: 12px;
 }
 
+/* Responsive images for learning slides */
+.learn-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
 
+/* When there are multiple images for a slide, stack by default and lay out side-by-side on wider screens */
+.learn-image-set {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .learn-image-set {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .learn-image-set .learn-image {
+    max-width: 48%;
+  }
+}
