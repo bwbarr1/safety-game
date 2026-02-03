@@ -19,10 +19,12 @@ body{
   margin:0;
   font-family:'Figtree','Nunito',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:var(--ink);
+
   background:
-    radial-gradient(900px 300px at 10% -5%, #fff6cc 0%, transparent 60%),
-    radial-gradient(800px 320px at 110% 10%, #fef3c7 0%, transparent 55%),
+    radial-gradient(900px 300px at 10% -5%, #fff6cc 0%, transparent 60%) no-repeat fixed / 1400px 700px,
+    radial-gradient(800px 320px at 110% 10%, #fef3c7 0%, transparent 55%) no-repeat fixed / 1300px 640px,
     var(--bg);
+
 }
 .container{max-width:980px;margin:0 auto;padding:18px}
 .header{display:flex;align-items:center;justify-content:space-between;margin:4px 0 14px}
