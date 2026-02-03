@@ -2,16 +2,16 @@ const QUESTIONS = [
 {
   text: "What type of control is an airbag?",
   video: "../assets/videos/airbag.mp4",
-  options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
+  options: ["Direct Control", "Critical Control", "Engineering Control", "Administrative"],
   correct: ["Direct Control", "Engineering Control"],
-  explanation: "Airbags are engineering controls; relying on them correctly also involves a direct action (proper restraint)."
+  explanation: "Airbags isolate people from the hazard, so they're an engineering control. They also specifically target high energy, mitigate exposure, and are effective even with human error, so they're a direct control."
 },
   {
-    text: "What type of control is using the rear view mirror in a vehicle?",
+    text: "What type of control is using the driver setup (adjusting seat, mirrors, steering wheel prior to driving)?",
     video: "../assets/videos/rearviewmirror.mp4",
-    options: ["Direct Control", "Engineering Control", "Administrative Control", "Better Than Nothing"],
-    correct: ["Engineering Control"],
-    explanation: "A built‑in feature that reduces risk by design—engineering control."
+    options: ["Direct Control", "Critical Control", "Engineering Control", "Administrative Control"],
+    correct: ["Critical Control", "Administrative"],
+    explanation: "Critical because not setting up things like your mirrors could be deadly if you can't see your blind spots. Administrative because it's a trained procedure. It's not direct because it does not specifically target high energy and has a high risk of human error."
   },
   {
     text: "What type of control is using the foot brake?",
