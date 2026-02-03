@@ -25,22 +25,8 @@ body{
     radial-gradient(800px 320px at 110% 10%, #fef3c7 0%, transparent 55%),
     var(--bg);
   
-  /* Prevent tiling */
-  background-repeat: no-repeat, no-repeat, no-repeat;
+ background-repeat: no-repeat;
 
-  /* Keep the blobs stationary relative to the viewport (nice effect on desktop) */
-  background-attachment: fixed, fixed, scroll; /* solid color can stay 'scroll' */
-
-  /* Make each gradient large enough to cover the viewport so it won’t run out */
-  background-size: 1400px 700px, 1300px 640px, auto;
-
-}
-
-/* Mobile override: avoid fixed attachment on small screens */
-@media (max-width: 768px){
-  body{
-    background-attachment: scroll, scroll, scroll; /* only override what changes */
-  }
 }
 
 .container{max-width:980px;margin:0 auto;padding:18px}
