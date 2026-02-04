@@ -10,22 +10,22 @@ const QUESTIONS = [
     text: "What type of control is driver setup (adjusting seat, mirrors, steering wheel prior to driving)?",
     video: "../assets/videos/rearviewmirror.mp4",
     options: ["Direct Control", "Critical Control", "Engineering Control", "Administrative Control"],
-    correct: ["Critical Control", "Administrative"],
+    correct: ["Critical Control", "Administrative Control"],
     explanation: "Critical because not setting up things like your mirrors could be deadly if you can't see your blind spots. Administrative because it's a trained procedure. It's not direct because it does not specifically target high energy and has a high risk of human error."
   },
   {
     text: "Avoiding unnecessary driving would be considered what type of control?",
     video: "../assets/videos/footbrake.mp4",
-    options: ["Direct Control", "Engineering Control", "Administrative Control", "Substitution/Elimination"],
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Substitution or Elimination"],
     correct: ["Direct Control", "Substitution/Elimination"],
     explanation: "This is both a direct control and substitution/elimination because it removes the high energy source from the equation. This is the best way to prevent a SIF, but obviously isn't always possible. Sticking with the example, driving is still often necessary."
   },
   {
-    text: "A driver monitoring system (like fatigue or distraction) is what kind of control?",
+    text: "A driver monitoring system (like for fatigue or distraction that actively vibrates and/or alarms to wake you up or gets your attention back on the road) is what kind of control?",
     video: "../assets/videos/sideviewmirror.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Critical Control"],
-    correct: ["Direct Control", "Engineering Control"],
-    explanation: "This is considered an engineering direct control because, by detecting a distraction or drowsiness, it can alert you and isolate you from the potential hazard (crashing). It's not a critical or administrative control because it's not something you do before you start driving and not something that is considered a must-have."
+    correct: ["Administrative Control"],
+    explanation: "This is considered an engineering direct control because, by detecting a distraction or drowsiness, it can alert you and isolate you from the potential hazard (crashing). It's more active than just an alert, so it's beyond administrative."
   },
   {
     text: "What type of control is journey management (planning route, checking weather and conditions)?",
@@ -58,7 +58,7 @@ const QUESTIONS = [
   {
     text: "What type of control are crumple zones (where the car is designed to crush in a crash to protect the passengers)?",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lane_change_assist.jpg/640px-Lane_change_assist.jpg",
-    options: ["Direct Control", "Engineering Control", "Administrative Control", "Elimination/Substitution"],
+    options: ["Direct Control", "Engineering Control", "Administrative Control", "Elimination or Substitution"],
     correct: ["Direct Control", "Engineering Control"],
     explanation: "Crumple Zones isolate you from the hazard, mitigate the high energy, and work regardless of the driver, so they're direct and engineering controls."
   },
