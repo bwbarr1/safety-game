@@ -24,7 +24,7 @@ const QUESTIONS = [
     text: "A driver monitoring system (like for fatigue or distraction that actively vibrates and/or alarms to wake you up or gets your attention back on the road) is what kind of control?",
     video: "../assets/videos/driver-monitoring-system.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Critical Control"],
-    correct: ["Administrative Control"],
+    correct: ["Direct Control", "Engineering Control"],
     explanation: "This is considered an engineering direct control because, by detecting a distraction or drowsiness, it can alert you and isolate you from the potential hazard (crashing). It's more active than just an alert, so it's beyond administrative."
   },
   {
