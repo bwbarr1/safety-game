@@ -17,7 +17,7 @@ const QUESTIONS = [
     text: "Avoiding unnecessary driving would be considered what type of control?",
     video: "../assets/videos/footbrake.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Substitution or Elimination"],
-    correct: ["Direct Control", "Substitution/Elimination"],
+    correct: ["Direct Control", "Substitution or Elimination"],
     explanation: "This is both a direct control and substitution/elimination because it removes the high energy source from the equation. This is the best way to prevent a SIF, but obviously isn't always possible. Sticking with the example, driving is still often necessary."
   },
   {
