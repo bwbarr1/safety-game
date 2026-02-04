@@ -135,7 +135,7 @@
     const extra  = chosen.filter(c => !correct.includes(c));
     let detail = q.explanation || '';
     if (missed.length) detail += `${detail?' ':''}Missing: ${missed.join(', ')}.`;
-    if (extra.length)  detail += `${detail?' ':''}Not required: ${extra.join(', ')}.`;
+    if (extra.length)  detail += `${detail?' ':''}Incorrect: ${extra.join(', ')}.`;
     feedback.innerHTML = `${isRight?goodTag:badTag} <div class='p' style='margin-top:6px'>${detail}</div>`;
   }
 
