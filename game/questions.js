@@ -39,7 +39,7 @@ const QUESTIONS = [
     video: "../assets/videos/pre-startup-walkaround.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Critical Control"],
     correct: ["Critical Control", "Administrative Control"],
-    explanation: "Doesn't directly target high energy, but is critical to potentially running over a child or animal."
+    explanation: "Doesn't directly target high energy, but is critical to preventing a potential SIF, like running over a child or animal."
   },
   {
     text: "What type of control is a hands-free device or no-device policy?",
