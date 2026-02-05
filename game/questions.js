@@ -14,7 +14,7 @@ const QUESTIONS = [
     explanation: "Critical because not setting up things like your mirrors could be deadly if you can't see your blind spots. Administrative because it's a trained procedure. It's not direct because it does not specifically target high energy and has a high risk of human error."
   },
   {
-    text: "Avoiding unnecessary driving would be considered what type of control?",
+    text: "Avoiding unnecessary driving (like taking public transportation or having a video call instead) would be considered what type of control?",
     video: "../assets/videos/avoid-unnecessary-driving.mp4",
     options: ["Direct Control", "Engineering Control", "Administrative Control", "Substitution or Elimination"],
     correct: ["Direct Control", "Substitution or Elimination"],
